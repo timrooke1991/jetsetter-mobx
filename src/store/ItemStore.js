@@ -22,7 +22,9 @@ export default class ItemStore {
   }
 
   @action.bound
-  addItems(item) { }
+  addItems(value) {
+    this.items.push(new Item(value, this))
+  }
 
   @action.bound
   updatePackedItemsFilter(value) {
@@ -32,5 +34,10 @@ export default class ItemStore {
   @action.bound
   updateUnpackedItemsFilter(value) {
     this.unpackedItemsFilter = value;
+  }
+
+  @action.bound
+  remove(itemToRemove) {
+    this.items.filter(item => item === itemToRemove);
   }
 }
