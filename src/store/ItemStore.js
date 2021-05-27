@@ -22,7 +22,7 @@ export default class ItemStore {
   }
 
   @action.bound
-  addItems(value) {
+  addItem(value) {
     this.items.push(new Item(value, this))
   }
 
