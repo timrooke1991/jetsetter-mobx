@@ -1,5 +1,6 @@
-import { observable, computed, action } from 'mobx';
+import { observable, computed, action, remove } from 'mobx';
 import Item from './ItemModel';
+
 export default class ItemStore {
   @observable items = [];
   @observable unpackedItemsFilter = '';
@@ -14,16 +15,20 @@ export default class ItemStore {
   }
 
   @computed get filteredPackedList() {
-    return this.packedItems.filter(item => item.value.includes(this.packedItemsFilter));
+    return this.items.filter(item =>
+      item.value.includes(this.packedItemsFilter)
+    );
   }
 
   @computed get filteredUnpackedList() {
-    return this.unpackedItems.filter(item => item.value.includes(this.unpackedItemsFilter));
+    return this.items.filter(item =>
+      item.value.includes(this.unpackedItemsFilter)
+    );
   }
 
   @action.bound
   addItem(value) {
-    this.items.push(new Item(value, this))
+    this.items.push(new Item(value, this));
   }
 
   @action.bound

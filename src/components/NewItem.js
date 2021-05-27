@@ -1,14 +1,14 @@
-import { inject } from 'mobx-react';
 import React, { Component } from 'react';
+import { inject } from 'mobx-react';
 
 @inject('itemList')
+
 class NewItem extends Component {
   state = { value: '' };
 
   handleChange = event => {
-    // Do something when the state of this input changes.
     const { value } = event.target;
-    this.setState({ value })
+    this.setState({ value });
   };
 
   handleSubmit = event => {
@@ -18,8 +18,6 @@ class NewItem extends Component {
     event.preventDefault();
 
     itemList.addItem(value);
-
-    // Reset the state of the component.
   };
 
   render() {

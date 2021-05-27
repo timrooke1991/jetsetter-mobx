@@ -1,15 +1,13 @@
 import uniqueId from 'lodash/uniqueId';
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, remove } from 'mobx';
 
 export default class Item {
-  id = uniqueId;
+  id = uniqueId();
   list;
   @observable value = '';
   @observable packed = false;
 
-  constructor(
-    value, list
-  ) {
+  constructor(value, list) {
     this.value = value;
     this.list = list;
   }
@@ -19,8 +17,8 @@ export default class Item {
     return !this.packed;
   }
 
-  @action.bound()
-  get toggle() {
+  @action.bound
+  toggle() {
     return (this.packed = !this.packed);
   }
 
