@@ -18,6 +18,8 @@ class NewItem extends Component {
     event.preventDefault();
 
     itemList.addItem(value);
+
+    this.setState({ value: '' })
   };
 
   render() {
